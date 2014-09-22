@@ -457,7 +457,7 @@ You can set display ads bottom and top inset with container.
 
 ### Setup
 
-  In order to use Seamless Player properly "AccessToken", "AppToken" and "ClientSecret" parameters need to be decleared on SLPlayerManager class before usage. It is recommended to perform setup on "UIApplicationDelegate" instance's "application:application didFinishLaunchingWithOptions:." selector.
+  In order to use Seamless Player properly "AppToken" parameter need to be decleared on SLManager class before usage. It is recommended to perform setup on "UIApplicationDelegate" instance's "application:application didFinishLaunchingWithOptions:." selector.
 
   i.e
 
@@ -468,9 +468,8 @@ You can set display ads bottom and top inset with container.
 
       // ...
 
-      [SLPlayerManager setAccessToken:@"<Please contact info@mobilike.com for access token data>"];
-      [SLPlayerManager setAppToken:@"<Please contact info@mobilike.com for app token data>"];
-      [SLPlayerManager setClientSecret:@"<Please contact info@mobilike.com for client secret data>"];
+      [[SLManager sharedManager] setAppToken:@"<Please contact seamless@mobilike.com for app token data>"];
+      
       // ...
 
       return YES;
