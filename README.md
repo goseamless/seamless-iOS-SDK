@@ -1,4 +1,4 @@
-Seamless Framework (v1.0.0)
+seamless SDK (v1.0.0)
 ==================================
 
 
