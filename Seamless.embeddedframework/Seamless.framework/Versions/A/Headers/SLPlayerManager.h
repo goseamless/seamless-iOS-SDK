@@ -20,18 +20,18 @@
 // Singleton instance provider
 + (instancetype)sharedManager;
 
-// Woodo credential accessors
-+ (NSString *) appToken;
-+ (void) setAppToken:(NSString *) token;
-+ (NSString *) accessToken;
-+ (void) setAccessToken:(NSString *) token;
-+ (NSString *) clientSecret;
-+ (void) setClientSecret:(NSString *) secret;
 + (NSString *) version;
 + (id<SLActivityIndicatorViewSource>) activityIndicatorViewSource;
 + (void) setActivityIndicatorViewSource:(id<SLActivityIndicatorViewSource>) source;
 
 // Woodo view controller presenter
+// TODO: This method is deprecated. Instead use;
+// - (SLRemoteControl *) presentPlayerWithUrl:(NSURL *) url
+//                                     entity:(NSString *) entity
+//                             attachmentView:(UIView *) attachmentView
+//                                      share:(SLShare *) share
+//                                    handler:(SLHandler *) handler;
+//
 - (SLRemoteControl *) presentPlayerWithUrl:(NSURL *) url
                                   entity:(NSString *) entity
                            attachmentView:(UIView *) attachmentView
@@ -47,6 +47,14 @@
                             finishHandler:(dispatch_block_t) finishHandler
                              errorHandler:(dispatch_block_t) errorHandler;
 
+// TODO: This method is deprecated. Instead use;
+// - (SLRemoteControl *) addPlayerToView:(UIView *) view
+//                                   url:(NSURL *) url
+//                                entity:(NSString *) entity
+//                        attachmentView:(UIView *) attachmentView
+//                                 share:(SLShare *) share
+//                               handler:(SLHandler *) handler;
+//
 - (SLRemoteControl *) addPlayerToView:(UIView *) view
                                  url:(NSURL *) url
                               entity:(NSString *) entity
