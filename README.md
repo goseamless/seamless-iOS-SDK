@@ -390,7 +390,7 @@ How to use
 
 ![Alt text](/ReadmeAssets/customization/3.png "Container edge insets")
 ```Objective-C
-     SLAppearance * appearance = [SLAppearance alloc] init];
+     SLAppearance * appearance = [[SLAppearance alloc] init];
      appearance.containerEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
 ```
 >Your containers left and right insets shouldn't be greater than 22 pt!
