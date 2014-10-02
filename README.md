@@ -358,7 +358,7 @@ How to use
 - Declare a SLInterstitialAdManager *adManager property in your view controller.
 
   ```Objective-C
-    @property (nonatomic, strong) SLInterstitial * adManager;
+    @property (nonatomic, strong) SLInterstitialAdManager * adManager;
   ```
 - In viewDidLoad;
 
