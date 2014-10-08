@@ -1,4 +1,4 @@
-seamless-iOS-SDK (v1.0.0)
+seamless-iOS-SDK (v1.0.2)
 ==================================
 
 
@@ -612,10 +612,10 @@ You can set display ads bottom and top inset with container.
       #import <Seamless/Seamless.h>
     ```
 
-  - Pass new instance of WPDefaultVideoController to SLPlayerManager.
+  - Pass new instance of SLDefaultVideoController to SLPlayerManager.
 
     ```Objective-C
-      UIView *attachmentView = [WPDefaultVideoControllerView new];
+      UIView *attachmentView = [SLDefaultVideoControllerView new];
 
       [[SLPlayerManager sharedManager]
        //...

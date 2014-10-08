@@ -40,5 +40,7 @@
 
 -(void)cleanDataSource;
 
+-(NSInteger)indexWithoutAds:(NSInteger)index;
+
 -(void)clean;
 @end
