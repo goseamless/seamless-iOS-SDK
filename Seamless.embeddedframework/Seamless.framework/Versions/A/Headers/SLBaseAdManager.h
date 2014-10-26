@@ -19,8 +19,6 @@
 @property (nonatomic, strong) SLAppearance * appearance;
 @property (nonatomic, weak, readwrite) NSMutableArray * dataSource;
 @property (nonatomic, weak, readwrite) id viewController;
-@property (nonatomic, copy) void (^startHandler)(void);
-@property (nonatomic, copy) void (^finishHandler)(void);
 @property (nonatomic) BOOL notInsert;
 @property (nonatomic, strong) NSMutableArray * ads;
 @property (nonatomic, strong) NSMutableArray * notInsertedAds;
@@ -35,8 +33,6 @@
 
 -(void)getAdsWithEntity:(NSString*)entity
                category:(SLCategory)category
-           startHandler:(void(^)(void))startHandler
-          finishHandler:(void(^)(void))finishHandler
            successBlock:(void(^)(void))successBlock
            failureBlock:(void(^)(NSError * error))failureBlock;
 -(void)setSeamlessAds:(NSMutableArray*)ads;

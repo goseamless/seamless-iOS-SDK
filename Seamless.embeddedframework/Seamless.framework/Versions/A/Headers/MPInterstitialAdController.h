@@ -145,6 +145,7 @@
  */
 + (NSMutableArray *)sharedInterstitialAdControllers;
 
+- (void) dismissInterstitial;
 #pragma mark - Deprecated
 
 /** @name Handling Custom Event Methods (Deprecated) */

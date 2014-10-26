@@ -1,4 +1,4 @@
-seamless-iOS-SDK (v1.0.2)
+seamless-iOS-SDK (v1.1.0)
 ==================================
 
 
@@ -16,8 +16,8 @@ Requirements
 - Frameworks
 
   - As of "-ObjC" flag must be defined, no need to link additional binary libraries (frameworks)  
-  
-## Installation 
+
+## Installation
 
   * [Drag and drop](#drag-and-drop)  
 
@@ -28,20 +28,20 @@ Requirements
   * [CollectionView Integration](#collectionview-integration)  
   * [Banner Integration](#banner-integration)  
   * [Interstitial Integration](#interstitial-integration)  
-  
+
 ## Customizing your feed ads  
 
   * [Feed Ad Customization](#feed-ad-customization)  
-  
+
 ## Video Player Integration  
- 
+
   * [Setup](#setup-1)  
   * [Basic Usage](#basic-usage)  
   * [Seamless Callbacks](#seamless-callbacks)  
   * [Default Video Controllers](#default-video-controllers)  
   * [Social Share Data](#social-share-data)  
 
- 
+
 
 
 
@@ -170,16 +170,10 @@ How to use
      [self.adManager
      getAdsWithEntity:@"seamless-example-tableview"
      category:SLCategoryNews
-     startHandler:^{
-         NSLog(@"start");
-     }
-     finishHandler:^{
-         NSLog(@"finish");
-     }
-     successHandler:^{
+     successBlock:^{
          NSLog(@"ads loaded");
      }
-     failureHandler:^(NSError *error) {
+     failureBlock:^(NSError *error) {
          NSLog(@"%@",error);
      }];
   ```
@@ -253,16 +247,10 @@ How to use
      [self.adManager
      getAdsWithEntity:@"seamless-example-collectionview"
      category:SLCategoryNews
-     startHandler:^{
-         NSLog(@"start");
-     }
-     finishHandler:^{
-         NSLog(@"finish");
-     }
-     successHandler:^{
+     successBlock:^{
          NSLog(@"ads loaded");
      }
-     failureHandler:^(NSError *error) {
+     failureBlock:^(NSError *error) {
          NSLog(@"%@",error);
      }];
   ```
@@ -469,7 +457,7 @@ You can set display ads bottom and top inset with container.
       // ...
 
       [[SLManager sharedManager] setAppToken:@"<Please contact seamless@mobilike.com for app token data>"];
-      
+
       // ...
 
       return YES;

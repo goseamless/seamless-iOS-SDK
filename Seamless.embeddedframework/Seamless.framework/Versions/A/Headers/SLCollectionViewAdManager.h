@@ -20,8 +20,6 @@
 
 -(void)getAdsWithEntity:(NSString*)entity
                category:(SLCategory)category
-           startHandler:(void(^)(void))startHandler
-          finishHandler:(void(^)(void))finishHandler
            successBlock:(void(^)(void))successBlock
            failureBlock:(void(^)(NSError * error))failureBlock;
 
