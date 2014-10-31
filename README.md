@@ -142,6 +142,8 @@ How to use
       return YES;
     }
   ```
+  After that, if you are using Xcode 6; you should add "NSLocationWhenInUseUsageDescription" key into your Info.plist file.
+![Alt text](/ReadmeAssets/Common/location.png "location")
 
 ### TableView integration
 
