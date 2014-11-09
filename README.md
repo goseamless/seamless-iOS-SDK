@@ -1,4 +1,4 @@
-seamless-iOS-SDK (v1.1.0)
+seamless-iOS-SDK (v1.2.0)
 ==================================
 
 
