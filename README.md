@@ -377,6 +377,11 @@ By providing descriptive entity names for different views or contents of your ap
     self.adManager.delegate = self;
     [self.adManager loadAd];
 ```
+
+- If your view is landscape, set landscapeModeEnabled to YES.
+```Objective-C
+    self.adManager.landscapeModeEnabled = YES;
+```
 - Add delegate methods;
 
 ```Objective-C
