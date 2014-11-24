@@ -159,7 +159,7 @@ How to use
     @property (nonatomic, strong) SLTableViewAdManager * adManager;
   ```
 
-- In viewDidLoad; instantiate a SLTableViewAdManager, passing your tableview, data source and view controller. Data source must be NSMutableArray.
+- In viewDidLoad; instantiate a SLTableViewAdManager, passing your tableview, data source and view controller. Data source must be NSMutableArray and must not be nil.
 
   ```Objective-C
     self.adManager = [[SLTableViewAdManager alloc] initWithTableView:self.tableView
@@ -170,8 +170,8 @@ How to use
 
   ```Objective-C
      [self.adManager
-     getAdsWithEntity:@"seamless-example-tableview"
-     category:SLCategoryNews
+     getAdsWithEntity:@"use-descriptive-name" *** see NOTE
+     category:***appropriate SLCategory**** (refer to SLManager.h)
      successBlock:^{
          NSLog(@"ads loaded");
      }
@@ -179,6 +179,11 @@ How to use
          NSLog(@"%@",error);
      }];
   ```
+- NOTE:  What are entities and category? Are they important?
+- Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
+By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
+- Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
+
 - Add these codes into the UITableView datasource and delegate methods;
 
   ```Objective-C
@@ -236,7 +241,7 @@ How to use
     @property (nonatomic, strong) SLCollectionViewAdManager * adManager;
   ```
 
-- In viewDidLoad; instantiate a SLCollectionViewAdManager, passing your collection view, data source and view controller. Data source must be NSMutableArray.
+- In viewDidLoad; instantiate a SLCollectionViewAdManager, passing your collection view, data source and view controller. Data source must be NSMutableArray and must not be nil.
 
   ```Objective-C
     self.adManager = [[SLCollectionViewAdManager alloc] initWithCollectionView:self.collectionView
@@ -247,8 +252,8 @@ How to use
 
   ```Objective-C
      [self.adManager
-     getAdsWithEntity:@"seamless-example-collectionview"
-     category:SLCategoryNews
+     getAdsWithEntity:@"use-descriptive-name" *** see NOTE
+     category:*** appropriate SLCategoryNews *** (refer to SLManager.h)
      successBlock:^{
          NSLog(@"ads loaded");
      }
@@ -256,6 +261,11 @@ How to use
          NSLog(@"%@",error);
      }];
   ```
+- NOTE:  What are entities and category? Are they important?
+- Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
+By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
+- Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
+
 - Add these codes into the UICollectionView datasource and delegate methods;
 
   ```Objective-C
@@ -317,25 +327,35 @@ How to use
   Finally, load an ad by sending adView the -loadAd message.
 
   ```Objective-C
-    self.adView = [[SLAdView alloc] initWithEntity:@"seamless-example-mma"
-                                          category:SLCategoryScience
+    self.adView = [[SLAdView alloc] initWithEntity:@"use-descriptive-name" *** see NOTE
+                                          category:*** appropriate SLCategory *** (refer to SLManager.h)
                                             adSize:SLAdSizeMMA
                                 rootViewController:self];
    self.adView.delegate = self;
    CGRect frame = self.adView.frame;
+   frame.origin.x = (self.view.bounds.size.width - SLAdSizeMMA.width)/2;
    frame.origin.y = self.view.bounds.size.height - SLAdSizeMMA.height;
    self.adView.frame = frame;
-   [self.view addSubview:self.adView];
    [self.adView loadAd];
    ```
+- NOTE:  What are entities and category? Are they important?
+- Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
+By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
+- Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
+
 - Delegate methods
   ```Objective-C
   -(void)adViewDidLoad:(SLAdView*)adView{
-  // ad load success
+    // ad load success
+    [self.adView loadAd];
+    // Adjust the frame of the superview if needed.
  }
 
   -(void)adViewDidFailToLoad:(SLAdView*)adView{
-  // ad load failed
+    // ad load failed
+    if ([self.view.subviews containsObject:self.adView]) {
+      [self.adView removeFromSuperview];
+    }
 }
   ```
 
