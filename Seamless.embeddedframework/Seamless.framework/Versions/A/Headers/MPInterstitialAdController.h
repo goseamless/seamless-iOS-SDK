@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class MPAdWebView;
+
 @protocol MPInterstitialAdControllerDelegate;
 
 /**
@@ -38,7 +40,7 @@
 /**
  * The delegate (`MPInterstitialAdControllerDelegate`) of the interstitial ad object.
  */
-@property (nonatomic, assign) id<MPInterstitialAdControllerDelegate> delegate;
+@property (nonatomic, weak) id<MPInterstitialAdControllerDelegate> delegate;
 
 /** @name Setting Request Parameters */
 
@@ -145,7 +147,9 @@
  */
 + (NSMutableArray *)sharedInterstitialAdControllers;
 
-- (void) dismissInterstitial;
+- (void)dismissInterstitial;
+- (MPAdWebView *)getWebView;
+
 #pragma mark - Deprecated
 
 /** @name Handling Custom Event Methods (Deprecated) */

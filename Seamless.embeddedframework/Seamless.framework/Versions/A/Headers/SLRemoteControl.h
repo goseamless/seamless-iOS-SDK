@@ -24,6 +24,9 @@ typedef void(^RemoteControlAsyncHandler)(id data);
 // Player state
 @property (nonatomic, readwrite) RemoteControlPlayerState playerState;
 
+// Full screen
+@property (nonatomic, readwrite) BOOL fullscreenModeEnabled;
+
 // TODO: Add play
 - (void) pauseThen:(RemoteControlAsyncHandler) asyncHandler;
 - (void) resumeThen:(RemoteControlAsyncHandler) asyncHandler;

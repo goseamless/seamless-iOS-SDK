@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MPConstants.h"
+
 @class MPBannerAdManager;
+
 typedef enum
 {
     MPNativeAdOrientationAny,
@@ -24,10 +26,13 @@ typedef enum
  */
 
 @interface MPAdView : UIView
-@property (nonatomic, retain) MPBannerAdManager *adManager;
+
+@property (nonatomic, strong) MPBannerAdManager *adManager;
+@property (nonatomic, weak) UIView *adContentView;
 @property (nonatomic, assign) BOOL hasTrackedImpression;
 @property (nonatomic, assign) NSTimeInterval firstVisibilityTimestamp;
-@property (nonatomic, assign) UIView *adContentView;
+
+
 /** @name Initializing a Banner Ad */
 
 /**
@@ -47,7 +52,7 @@ typedef enum
  * @warning **Important**: Before releasing an instance of `MPAdView`, you must set its delegate
  * property to `nil`.
  */
-@property (nonatomic, assign) id<MPAdViewDelegate> delegate;
+@property (nonatomic, weak) id<MPAdViewDelegate> delegate;
 
 /** @name Setting Request Parameters */
 
@@ -70,7 +75,7 @@ typedef enum
  * On the MoPub website, keyword targeting options can be found under the "Advanced Targeting"
  * section when managing campaigns.
  */
-@property (nonatomic, retain) NSString *keywords;
+@property (nonatomic, copy) NSString *keywords;
 
 /**
  * A `CLLocation` object representing a user's location that should be passed to the MoPub ad server

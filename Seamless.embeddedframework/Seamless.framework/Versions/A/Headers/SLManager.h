@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 @class MPAdView;
 @class SLAd;
 typedef enum{
@@ -52,6 +53,7 @@ typedef enum{
 -(void)getAdsWithEntity:(NSString*)entity
                category:(SLCategory)category
                    type:(NSString*)type
+                   size:(CGSize)adSize
            successBlock:(void(^)(NSMutableArray * ads))successBlock
            failureBlock:(void(^)(NSError * error))failureBlock;
 

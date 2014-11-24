@@ -353,25 +353,21 @@ How to use
 - In viewDidLoad;
 
 ```Objective-C
-    self.adManager = [[SLInterstitialAdManager alloc] initWithDelegate:self];
+    self.adManager = [[SLInterstitialAdManager alloc] initWithEntity:@"interstitial-sample"  category:SLCategoryNews];
+    self.adManager.delegate = self;
+    [self.adManager loadAd];
+```
+- Add delegate methods;
 
-    __weak id selfWeak = self;
+```Objective-C
+- (void)interstitialDidLoad:(MPInterstitialAdController *)interstitial{
+  [interstitial showFromViewController:self];
+}
 
-    [self.adManager
-     getAdWithEntity:@"interstitial-detay"
-     category:SLCategoryPolitics
-     successBlock:^(MPInterstitialAdController *adController) {
+-(void)interstitialDidFailToLoad:(MPInterstitialAdController *)interstitial{
+  
+}
 
-         id selfStrong = selfWeak;
-
-         if (selfStrong)
-         {
-             [adController showFromViewController:selfStrong];
-         }
-
-    } failureBlock:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
 ```
 
 ### Feed Ad Customization
