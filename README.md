@@ -347,7 +347,7 @@ By providing descriptive entity names for different views or contents of your ap
   ```Objective-C
   -(void)adViewDidLoad:(SLAdView*)adView{
     // ad load success
-    [self.adView loadAd];
+    [self.view addSubview:self.adView];
     // Adjust the frame of the superview if needed.
  }
 
