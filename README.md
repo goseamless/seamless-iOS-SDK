@@ -392,6 +392,16 @@ By providing descriptive entity names for different views or contents of your ap
 -(void)interstitialDidFailToLoad:(MPInterstitialAdController *)interstitial{
   
 }
+```
+
+- Disable delegate;
+
+```Objective-C
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.adManager.delegate = nil;
+}
 
 ```
 
