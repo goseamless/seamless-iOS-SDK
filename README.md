@@ -227,6 +227,13 @@ By providing descriptive entity names for different views or contents of your ap
   [self.adManager cleanDataSource];
 ```
 
+- To stop inserting ads to the table view (eg. the table view is popped or refreshed before ads are inserted), add these lines before the view disappears or before the table view is updated with new ad request.
+
+  ```Objective-C
+[self.adManager clean];
+self.adManager = nil;
+  ```
+
 ### CollectionView integration
 
 - Import required headers
