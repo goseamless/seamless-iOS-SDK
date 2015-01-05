@@ -179,7 +179,7 @@ How to use
          NSLog(@"%@",error);
      }];
   ```
-- NOTE:  What are entities and category? Are they important?
+**NOTE:  What are entities and category? Are they important?**
 - Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
 By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
 - Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
@@ -268,7 +268,7 @@ self.adManager = nil;
          NSLog(@"%@",error);
      }];
   ```
-- NOTE:  What are entities and category? Are they important?
+**NOTE:  What are entities and category? Are they important?**
 - Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
 By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
 - Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
@@ -345,7 +345,7 @@ By providing descriptive entity names for different views or contents of your ap
    self.adView.frame = frame;
    [self.adView loadAd];
    ```
-- NOTE:  What are entities and category? Are they important?
+**NOTE:  What are entities and category? Are they important?**
 - Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
 By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
 - Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
