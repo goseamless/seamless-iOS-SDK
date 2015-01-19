@@ -13,9 +13,14 @@
 #import "SLManager.h"
 #import "SLAppearance.h"
 @class SLAd;
+
+@protocol SLTableViewAdManagerDelegate
+-(void)adInsertedTableViewAtIndexPath:(NSIndexPath *)indexPath;
+@end
+
 @interface SLTableViewAdManager : SLBaseAdManager
 
-@property (nonatomic, strong) UIColor * cellBackgroundColor;
+@property (nonatomic, weak) id delegate;
 
 -(id)initWithTableView:(UITableView*)tableView
             dataSource:(NSMutableArray*)dataSource

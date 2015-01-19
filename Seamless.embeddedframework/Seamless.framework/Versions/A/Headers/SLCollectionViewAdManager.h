@@ -12,7 +12,13 @@
 #import "SLBaseAdManager.h"
 #import "SLManager.h"
 
+@protocol SLCollectionViewAdManagerDelegate
+-(void)adInsertedCollectionViewAtIndexPath:(NSIndexPath *)indexPath;
+@end
+
 @interface SLCollectionViewAdManager : SLBaseAdManager
+
+@property (nonatomic, weak) id delegate;
 
 -(id)initWithCollectionView:(UICollectionView*)collectionView
                  dataSource:(NSMutableArray*)dataSource

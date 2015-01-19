@@ -47,4 +47,7 @@
 @property (nonatomic, strong) UIColor * maiaCtaButtonBackgroundColor;
 
 @property (nonatomic) UITableViewRowAnimation tableViewRowAnimation;
+
+@property (nonatomic) CGSize collectionViewPortraitCellSize;
+@property (nonatomic) CGSize collectionViewLandscapeCellSize;
 @end
