@@ -1,4 +1,4 @@
-seamless-iOS-SDK (v1.4.0)
+seamless-iOS-SDK (v1.5.0)
 ==================================
 
 
@@ -472,7 +472,11 @@ You can set display ads bottom and top inset with container.
     appearance.maiaCTATextColor = [UIColor blackColor];
 ```
 
-
+- If you have collectionview with multiple columns you need to set cell sizes;
+```Objective-C
+    appearance.collectionViewLandscapeCellSize = CGSizeMake(width, height);
+    appearance.collectionViewPortraitCellSize = CGSizeMake(width, height);
+```
 - After that you can set appearance;
 
 ```Objective-C
