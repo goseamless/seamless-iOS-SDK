@@ -16,6 +16,6 @@
 #import "SLAppearance.h"
 #import "SLAdView.h"
 #import "SLCollectionViewAdManager.h"
-#import <Seamless/SLPlayer.h>
+#import "SLPlayer.h"
 
 #endif

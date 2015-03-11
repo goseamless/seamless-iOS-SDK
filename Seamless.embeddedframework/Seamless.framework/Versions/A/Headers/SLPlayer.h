@@ -9,11 +9,11 @@
 #ifndef Seamless_Project_iOS_Player_h
 #define Seamless_Project_iOS_Player_h
 
-#import <Seamless/SLDefaultVideoControllerView.h>
-#import <Seamless/SLPlayerManager.h>
-#import <Seamless/SLRemoteControl.h>
-#import <Seamless/SLShare.h>
-#import <Seamless/SLHandler.h>
-#import <Seamless/SLActivityIndicatorViewSource.h>
+#import "SLDefaultVideoControllerView.h"
+#import "SLPlayerManager.h"
+#import "SLRemoteControl.h"
+#import "SLShare.h"
+#import "SLHandler.h"
+#import "SLActivityIndicatorViewSource.h"
 
 #endif

@@ -17,16 +17,26 @@
 @class SLAdView;
 
 @protocol SLAdViewDelegate
--(void)adViewDidLoad:(SLAdView*)adView;
--(void)adViewDidFailToLoad:(SLAdView*)adView;
+
+- (void)adViewDidLoad:(SLAdView *)adView;
+
+- (void)adViewDidFailToLoad:(SLAdView *)adView;
+
 @end
 
 @interface SLAdView : UIView <MPAdViewDelegate>
+
 @property (nonatomic, weak) id delegate;
+
 - (instancetype)initWithEntity:(NSString *)entity
                       category:(SLCategory)category
                         adSize:(CGSize)adSize
             rootViewController:(UIViewController *)viewController;
 
--(void)loadAd;
+- (void)loadAd;
+
+- (void)stopAutomaticallyRefreshing;
+
+- (void)startAutomaticallyRefreshing;
+
 @end

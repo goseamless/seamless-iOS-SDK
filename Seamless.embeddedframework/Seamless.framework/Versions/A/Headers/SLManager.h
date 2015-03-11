@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 @class MPAdView;
 @class SLAd;
+@class SLHttpRequestManager;
 typedef enum{
     SLCategoryUncategorised,
     SLCategoryArt,
@@ -47,23 +48,24 @@ typedef enum{
 @property (nonatomic, copy) NSString *appToken;
 @property (nonatomic) BOOL locationEnabled;
 
-+(SLManager*)sharedManager;
-+(NSString *) versiyon;
++ (SLManager*)sharedManager;
++ (NSString *) versiyon;
 
--(void)getAdsWithEntity:(NSString*)entity
+- (void)getAdsWithEntity:(NSString*)entity
                category:(SLCategory)category
                    type:(NSString*)type
                    size:(CGSize)adSize
            successBlock:(void(^)(NSMutableArray * ads))successBlock
-           failureBlock:(void(^)(NSError * error))failureBlock;
+           failureBlock:(void(^)(NSError * error))failureBlock
+     httpRequestManager:(SLHttpRequestManager*)manager;
 
--(void)getAdTargetingWithAdView:(MPAdView*)adView
+- (void)getAdTargetingWithAdView:(MPAdView*)adView
                          entity:(NSString*)entity
                        category:(SLCategory)category
                    successBlock:(void(^)(MPAdView * adView))successBlock
                    failureBlock:(void(^)(NSError * error))failureBlock;
 
--(void)addAdManager:(id)adManager;
+- (void)addAdManager:(id)adManager;
 
--(void)removeAdManager:(id)adManager;
+- (void)removeAdManager:(id)adManager;
 @end

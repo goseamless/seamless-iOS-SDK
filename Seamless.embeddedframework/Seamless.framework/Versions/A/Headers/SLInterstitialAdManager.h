@@ -11,8 +11,19 @@
 #import "SLManager.h"
 
 @protocol SLInterstitialAdManagerDelegate
--(void)interstitialDidLoad:(MPInterstitialAdController *)interstitial;
--(void)interstitialDidFailToLoad:(MPInterstitialAdController *)interstitial;
+
+- (void)interstitialDidLoad:(MPInterstitialAdController *)interstitial;
+
+- (void)interstitialDidFailToLoad:(MPInterstitialAdController *)interstitial;
+
+- (void)interstitialWillPresent:(MPInterstitialAdController *)interstitial;
+
+- (void)interstitialDidPresent:(MPInterstitialAdController *)interstitial;
+
+- (void)interstitialWillDismiss:(MPInterstitialAdController *)interstitial;
+
+- (void)interstitialDidDismiss:(MPInterstitialAdController* )interstitial;
+
 @end
 
 @interface SLInterstitialAdManager : NSObject <MPInterstitialAdControllerDelegate>

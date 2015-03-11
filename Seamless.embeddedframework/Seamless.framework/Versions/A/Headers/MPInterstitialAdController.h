@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-
 @class MPAdWebView;
 
 @protocol MPInterstitialAdControllerDelegate;
@@ -147,9 +146,8 @@
  */
 + (NSMutableArray *)sharedInterstitialAdControllers;
 
-- (void)dismissInterstitial;
+- (void) dismissInterstitial;
 - (MPAdWebView *)getWebView;
-
 #pragma mark - Deprecated
 
 /** @name Handling Custom Event Methods (Deprecated) */
