@@ -46,6 +46,8 @@ typedef enum{
 @property (nonatomic) float finishHandlerTimer;
 @property (nonatomic) int insertType;
 @property (nonatomic, copy) NSString *appToken;
+@property (nonatomic, strong) NSString * fallbackToken;
+@property (nonatomic) BOOL isPreroll;
 @property (nonatomic) BOOL locationEnabled;
 
 + (SLManager*)sharedManager;
