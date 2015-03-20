@@ -1,4 +1,4 @@
-seamless-iOS-SDK (v1.5.1)
+seamless-iOS-SDK (v2.0.0)
 ==================================
 
 
@@ -159,7 +159,7 @@ How to use
     @property (nonatomic, strong) SLTableViewAdManager * adManager;
   ```
 
-- In viewDidLoad; instantiate a SLTableViewAdManager, passing your tableview, data source and view controller. Data source must be NSMutableArray and must not be nil.
+- In viewDidLoad; instantiate a SLTableViewAdManager, passing your tableview, data source and view controller. Data source must be strong (not copy) NSMutableArray and must not be nil.
 
   ```Objective-C
     self.adManager = [[SLTableViewAdManager alloc] initWithTableView:self.tableView
