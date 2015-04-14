@@ -41,8 +41,7 @@ Requirements
   * [Default Video Controllers](#default-video-controllers)  
   * [Social Share Data](#social-share-data)  
 
-
-
+## [FAQ](#faq)
 
 
 
@@ -170,7 +169,7 @@ How to use
 
   ```Objective-C
      [self.adManager
-     getAdsWithEntity:@"use-descriptive-name" *** see NOTE
+     getAdsWithEntity:@"use-descriptive-name" *** see FAQ
      category:***appropriate SLCategory**** (refer to SLManager.h)
      successBlock:^{
          NSLog(@"ads loaded");
@@ -179,12 +178,6 @@ How to use
          NSLog(@"%@",error);
      }];
   ```
-**NOTE:  What are entities and category? Are they important?**
-- Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
-By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
-- Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
-
-- Add these codes into the UITableView datasource and delegate methods;
 
   ```Objective-C
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -259,7 +252,7 @@ self.adManager = nil;
 
   ```Objective-C
      [self.adManager
-     getAdsWithEntity:@"use-descriptive-name" *** see NOTE
+     getAdsWithEntity:@"use-descriptive-name" *** see FAQ
      category:*** appropriate SLCategoryNews *** (refer to SLManager.h)
      successBlock:^{
          NSLog(@"ads loaded");
@@ -268,13 +261,7 @@ self.adManager = nil;
          NSLog(@"%@",error);
      }];
   ```
-**NOTE:  What are entities and category? Are they important?**
-- Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
-By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
-- Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
-
-- Add these codes into the UICollectionView datasource and delegate methods;
-
+  
   ```Objective-C
   - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -334,7 +321,7 @@ By providing descriptive entity names for different views or contents of your ap
   Finally, load an ad by sending adView the -loadAd message.
 
   ```Objective-C
-    self.adView = [[SLAdView alloc] initWithEntity:@"use-descriptive-name" *** see NOTE
+    self.adView = [[SLAdView alloc] initWithEntity:@"use-descriptive-name" *** see FAQ
                                           category:*** appropriate SLCategory *** (refer to SLManager.h)
                                             adSize:SLAdSizeMMA
                                 rootViewController:self];
@@ -345,10 +332,6 @@ By providing descriptive entity names for different views or contents of your ap
    self.adView.frame = frame;
    [self.adView loadAd];
    ```
-**NOTE:  What are entities and category? Are they important?**
-- Entity names are used by Seamless to distinguish and determine whether it should provide ad or not.
-By providing descriptive entity names for different views or contents of your app, Seamless can control which view or content will display ads or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
-- Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
 
 - Delegate methods
   ```Objective-C
@@ -703,7 +686,7 @@ You can set display ads bottom and top inset with container.
       ```Objective-C
       NSString *urlString = @"http://this.is/string/image.png";
       NSURL *url = [NSURL URLWithString:@"https://this.is/url/image.png"];
-
+      
       share.socialImages = @[urlString, url];
       ```
 
@@ -737,3 +720,80 @@ You can set display ads bottom and top inset with container.
       @"2244"
       ];
     ```
+   
+
+### FAQ
+* **What are entities and categories? Are they important?**
+
+  - Entity names are used by Seamless to distinguish different views and determine whether it should provide ad or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
+  
+  - Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
+
+* **I can’t build the app!**
+
+  - Please double check if Other Linker Flags is set to -ObjC. Note that xcode is case sensitive.
+  - The app token might contain special characters. Please try removing and typing it manually.
+  - If you’re using “-all_load” flag in Other Linker Flags under Build Settings, run the app in a real device instead of simulator. Or use “-force_load” flag instead.
+
+* **I’m getting “Inserting row 0” crash after feed ad integration.**
+
+  Make sure the data source and view controller is NOT nil at initialization.
+
+* **Multi-column collection view layout is messed up when feed ad appears.**
+
+  Please set up collection view appearance if you haven’t done so.
+  ```
+    appearance.collectionViewLandscapeCellSize = CGSizeMake(width, height);
+    appearance.collectionViewPortraitCellSize = CGSizeMake(width, height);
+    ```
+
+* **My app crashes after interstitial ad shows up.**
+
+  This may happen because interstitial adManager delegate still present but the parent view controller doesn’t. Please disable delegate when appropriate.
+  ```
+  -(void)viewWillDisappear:(BOOL)animated
+  {
+      [super viewWillDisappear:animated];
+      self.adManager.delegate = nil;
+  }
+  ```
+  
+* **My app only supports portrait orientation. After Seamless video player disappears, my app stays in landscape mode.**
+
+  Check if your orientation related methods are getting called. Note that methods in navigation controller can be invoked instead of those in view controller.
+```
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
+    return NO;
+}
+```
+
+* **I don’t see any advertisements!**
+
+  Search for “SeamlessInfo” in the log and check for any warnings and error messages. If there's no issue, please contact our operation team.
+  
+* **I don't see any video ads!** 
+ 
+  If you triggered ad requests by playing the video, we can define ads for those entities. Please contact our operation team.
+
+* **I’m getting “Unable to run app in Simulator” error.**
+
+ Try removing the app from the simulator or iOS Simulator > Reset Contents and Settings
+
+
+* **I get compiler error with this message: Undefined symbols for architecture x86_64: “_UnityGetGLViewController”, referenced from: _FBNativeAdClick in Seamless**
+
+  Check if you’re using “-all_load” flag in Other Linker Flags under Build Settings. If you are, then simply run the app in a real device instead of simulator. Or use “-force_load” flag instead.
