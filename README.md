@@ -217,6 +217,7 @@ How to use
   }
   ```
 - If you want to clean your dataSource (Remove all ads in your dataSource and reload your tableView);
+
 ```Objective-C
   [self.adManager cleanDataSource];
 ```
@@ -299,6 +300,7 @@ self.adManager = nil;
   ```
 
 - If you want to clean your dataSource (Remove all ads in your dataSource and reload your collectionView);
+
 ```Objective-C
   [self.adManager cleanDataSource];
 ```
@@ -333,9 +335,10 @@ self.adManager = nil;
    self.adView.frame = frame;
    [self.adView loadAd];
    ```
-
+   
 - Delegate methods
-  ```Objective-C
+
+```Objective-C
   -(void)adViewDidLoad:(SLAdView*)adView{
     // ad load success
     [self.view addSubview:self.adView];
@@ -370,6 +373,7 @@ self.adManager = nil;
 ```
 
 - If your view is landscape, set landscapeModeEnabled to YES.
+
 ```Objective-C
     self.adManager.landscapeModeEnabled = YES;
 ```
@@ -457,6 +461,7 @@ You can set display ads bottom and top inset with container.
 ```
 
 - If you have collectionview with multiple columns you need to set cell sizes;
+
 ```Objective-C
     appearance.collectionViewLandscapeCellSize = CGSizeMake(width, height);
     appearance.collectionViewPortraitCellSize = CGSizeMake(width, height);
@@ -560,7 +565,7 @@ You can set display ads bottom and top inset with container.
   - Presentation handler,
 
     . if presenting Seamless as view controller, this callback fired right after presentation animation completed.
-
+    
     . if adding Seamless as subview, this callback fired right after attached to superview.
 
     ```Objective-C
@@ -595,10 +600,10 @@ You can set display ads bottom and top inset with container.
   - Finish handler,
 
     . if presented Seamless as view controller, this callback fired right after dismiss animation completed.
-
+    
     . if added Seamless as subview, this callback fired right after detached from superview.
 
-    Finish handler callback means Seamless completed playing each content (including advertisements).
+   Finish handler callback means Seamless completed playing each content (including advertisements).
 
     ```Objective-C
     // Allocation & initialization of finish handler
@@ -638,7 +643,7 @@ You can set display ads bottom and top inset with container.
        attachmentView:attachmentView
        // ...];
     ```
-
+    
     If given, attachment view will be added to main content, content you want to play, with same size with video player's boundaries.
 
 
@@ -673,6 +678,7 @@ You can set display ads bottom and top inset with container.
 
   - **Social**, used when share with Facebook or Twitter prompted.
     - **Text**, takes NSString instance input as social share text
+
       ```Objective-C
       share.socialText = @"This text will be shared at Facebook or Twitter";
       ```
@@ -693,6 +699,7 @@ You can set display ads bottom and top inset with container.
 
   - **Mail**, only used when share via mail prompted.
     - **Body**, takes NSString instance input as mail body.
+
     ```Objective-C
     share.mailBody = @"This text will appear at mail body";
     ```
@@ -710,6 +717,7 @@ You can set display ads bottom and top inset with container.
 
   - **Sms**, only used when share via mail prompted.
     - **Body**, takes NSString instance input as sms body.
+
     ```Objective-C
     share.smsBody = @"This text will appear at sms body";
     ```
