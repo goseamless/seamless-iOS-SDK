@@ -41,7 +41,7 @@ Requirements
   * [Default Video Controllers](#default-video-controllers)  
   * [Social Share Data](#social-share-data)  
 
-## FAQ 
+## Frequently Asked Questions 
   * [FAQ](#faq)
 
 
@@ -732,6 +732,7 @@ You can set display ads bottom and top inset with container.
    
 
 ### FAQ
+
 * **What are entities and categories? Are they important?**
 
   - Entity names are used by Seamless to distinguish different views and determine whether it should provide ad or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
