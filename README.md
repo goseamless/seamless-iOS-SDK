@@ -41,7 +41,8 @@ Requirements
   * [Default Video Controllers](#default-video-controllers)  
   * [Social Share Data](#social-share-data)  
 
-## [FAQ](#faq)
+## FAQ 
+  * [FAQ](#faq)
 
 
 
