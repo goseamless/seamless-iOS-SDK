@@ -1,4 +1,4 @@
-seamless-iOS-SDK (v2.1.1)
+seamless-iOS-SDK (v2.2.0)
 ==================================
 
 
@@ -380,11 +380,11 @@ self.adManager = nil;
 - Add delegate methods;
 
 ```Objective-C
-- (void)interstitialDidLoad:(MPInterstitialAdController *)interstitial{
+- (void)interstitialDidLoad:(SLInterstitialAdManager *)interstitial{
   [interstitial showFromViewController:self];
 }
 
--(void)interstitialDidFailToLoad:(MPInterstitialAdController *)interstitial{
+-(void)interstitialDidFailToLoad:(SLInterstitialAdManager *)interstitial{
   
 }
 ```
