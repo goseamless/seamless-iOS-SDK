@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "MPAdView.h"
+#import "GADBannerViewDelegate.h"
 #import "SLManager.h"
 
 @class SLAd;
 @class SLAdRequestManager;
 @class SLAppearance;
 
-@interface SLBaseAdManager : NSObject <MPAdViewDelegate>
+@interface SLBaseAdManager : NSObject <MPAdViewDelegate, GADBannerViewDelegate>
 
 @property (nonatomic, strong) SLAppearance * appearance;
 @property (nonatomic, weak, readwrite) NSMutableArray * dataSource;

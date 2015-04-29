@@ -8,25 +8,27 @@
 
 #import <Foundation/Foundation.h>
 #import "MPInterstitialAdController.h"
+#import "GADInterstitialDelegate.h"
 #import "SLManager.h"
 
+@class SLInterstitialAdManager;
 @protocol SLInterstitialAdManagerDelegate
 
-- (void)interstitialDidLoad:(MPInterstitialAdController *)interstitial;
+@required
+- (void)interstitialDidLoad:(SLInterstitialAdManager *)interstitial;
 
-- (void)interstitialDidFailToLoad:(MPInterstitialAdController *)interstitial;
+@optional
+- (void)interstitialDidFailToLoad:(SLInterstitialAdManager *)interstitial;
 
-- (void)interstitialWillPresent:(MPInterstitialAdController *)interstitial;
+- (void)interstitialWillPresent:(SLInterstitialAdManager *)interstitial;
 
-- (void)interstitialDidPresent:(MPInterstitialAdController *)interstitial;
+- (void)interstitialWillDismiss:(SLInterstitialAdManager *)interstitial;
 
-- (void)interstitialWillDismiss:(MPInterstitialAdController *)interstitial;
-
-- (void)interstitialDidDismiss:(MPInterstitialAdController* )interstitial;
+- (void)interstitialDidDismiss:(SLInterstitialAdManager* )interstitial;
 
 @end
 
-@interface SLInterstitialAdManager : NSObject <MPInterstitialAdControllerDelegate>
+@interface SLInterstitialAdManager : NSObject <MPInterstitialAdControllerDelegate, GADInterstitialDelegate>
 @property (nonatomic) BOOL landscapeModeEnabled;
 @property (nonatomic, weak) id delegate;
 
@@ -34,4 +36,6 @@
             category:(SLCategory)category;
 
 - (void)loadAd;
+
+- (void)showFromViewController:(UIViewController *)controller;
 @end

@@ -15,6 +15,7 @@
 @class SLAd;
 
 @protocol SLTableViewAdManagerDelegate
+@optional
 -(void)adInsertedTableViewAtIndexPath:(NSIndexPath *)indexPath;
 @end
 

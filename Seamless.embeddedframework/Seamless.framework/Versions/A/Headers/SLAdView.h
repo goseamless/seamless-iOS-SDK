@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MPAdView.h"
 #import "SLManager.h"
+#import "GADBannerViewDelegate.h"
 
 #define SLAdSizeMMA             CGSizeMake(320, 50)
 #define SLAdSizeMRect           CGSizeMake(300, 250)
@@ -17,14 +18,14 @@
 @class SLAdView;
 
 @protocol SLAdViewDelegate
-
+@optional
 - (void)adViewDidLoad:(SLAdView *)adView;
 
 - (void)adViewDidFailToLoad:(SLAdView *)adView;
 
 @end
 
-@interface SLAdView : UIView <MPAdViewDelegate>
+@interface SLAdView : UIView <MPAdViewDelegate, GADBannerViewDelegate>
 
 @property (nonatomic, weak) id delegate;
 

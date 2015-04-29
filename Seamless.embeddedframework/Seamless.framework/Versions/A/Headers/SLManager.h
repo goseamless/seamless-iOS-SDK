@@ -47,6 +47,7 @@ typedef enum{
 @property (nonatomic) int insertType;
 @property (nonatomic, copy) NSString *appToken;
 @property (nonatomic, strong) NSString * fallbackToken;
+@property (nonatomic, strong) NSString * fallbackInterstitialSource;
 @property (nonatomic) BOOL isPreroll;
 @property (nonatomic) BOOL locationEnabled;
 

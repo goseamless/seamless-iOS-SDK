@@ -13,6 +13,7 @@
 #import "SLManager.h"
 
 @protocol SLCollectionViewAdManagerDelegate
+@optional
 -(void)adInsertedCollectionViewAtIndexPath:(NSIndexPath *)indexPath;
 @end
 

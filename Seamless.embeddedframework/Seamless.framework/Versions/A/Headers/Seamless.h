@@ -17,5 +17,7 @@
 #import "SLAdView.h"
 #import "SLCollectionViewAdManager.h"
 #import "SLPlayer.h"
+#import "GADBannerViewDelegate.h"
+#import "GADModules.h"
 
 #endif
