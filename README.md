@@ -43,7 +43,16 @@ Requirements
 
 ## Frequently Asked Questions 
   * [FAQ](#faq)
-
+  * Q1. [What are entities and categories? Are they important?] (#q1)
+  * Q2. [I can’t build the app!] (#q2)
+  * Q3. [I’m getting “Inserting row 0” crash after feed ad integration.] (#q3)
+  * Q4. [Multi-column collection view layout is messed up when feed ad appears.] (#q4)
+  * Q5. [My app crashes after interstitial ad shows up.] (#q5)
+  * Q6. [My app only supports portrait orientation. After Seamless video player disappears, my app stays in landscape mode.] (#q6)
+  * Q7. [I don’t see any advertisements!] (#q7)
+  * Q8. [I don't see any video ads!] (#q8)
+  * Q9. [I’m getting “Unable to run app in Simulator” error.] (#q9)
+  * Q10. [I get compiler error with this message: Undefined symbols for architecture x86_64: “_UnityGetGLViewController”, referenced from: _FBNativeAdClick in Seamless] (#q10)
 
 
 Installation
@@ -731,24 +740,28 @@ You can set display ads bottom and top inset with container.
     ```
    
 
-### FAQ
+## FAQ
 
+##### Q1
 * **What are entities and categories? Are they important?**
 
   - Entity names are used by Seamless to distinguish different views and determine whether it should provide ad or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
   
   - Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
 
+##### Q2
 * **I can’t build the app!**
 
   - Please double check if Other Linker Flags is set to -ObjC. Note that xcode is case sensitive.
   - The app token might contain special characters. Please try removing and typing it manually.
   - If you’re using “-all_load” flag in Other Linker Flags under Build Settings, run the app in a real device instead of simulator. Or use “-force_load” flag instead.
 
+##### Q3
 * **I’m getting “Inserting row 0” crash after feed ad integration.**
 
   Make sure the data source and view controller is NOT nil at initialization.
 
+##### Q4
 * **Multi-column collection view layout is messed up when feed ad appears.**
 
   Please set up collection view appearance if you haven’t done so.
@@ -757,6 +770,7 @@ You can set display ads bottom and top inset with container.
     appearance.collectionViewPortraitCellSize = CGSizeMake(width, height);
     ```
 
+##### Q5
 * **My app crashes after interstitial ad shows up.**
 
   This may happen because interstitial adManager delegate still present but the parent view controller doesn’t. Please disable delegate when appropriate.
@@ -767,7 +781,8 @@ You can set display ads bottom and top inset with container.
       self.adManager.delegate = nil;
   }
   ```
-  
+
+##### Q6
 * **My app only supports portrait orientation. After Seamless video player disappears, my app stays in landscape mode.**
 
   Check if your orientation related methods are getting called. Note that methods in navigation controller can be invoked instead of those in view controller.
@@ -791,19 +806,22 @@ You can set display ads bottom and top inset with container.
 }
 ```
 
+##### Q7
 * **I don’t see any advertisements!**
 
   Search for “SeamlessInfo” in the log and check for any warnings and error messages. If there's no issue, please contact our operation team.
-  
+
+##### Q8  
 * **I don't see any video ads!** 
  
   If you triggered ad requests by playing the video, we can define ads for those entities. Please contact our operation team.
 
+##### Q9
 * **I’m getting “Unable to run app in Simulator” error.**
 
  Try removing the app from the simulator or iOS Simulator > Reset Contents and Settings
 
-
+##### Q10
 * **I get compiler error with this message: Undefined symbols for architecture x86_64: “_UnityGetGLViewController”, referenced from: _FBNativeAdClick in Seamless**
 
   Check if you’re using “-all_load” flag in Other Linker Flags under Build Settings. If you are, then simply run the app in a real device instead of simulator. Or use “-force_load” flag instead.
