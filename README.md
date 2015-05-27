@@ -748,6 +748,9 @@ You can set display ads bottom and top inset with container.
   - Entity names are used by Seamless to distinguish different views and determine whether it should provide ad or not. For example, you could use different entity names for main view and detail view or include menu names in the entity names.
   
   - Category is used by Mopub to provide more relevant advertisement. Accurate category names will return better ads.
+  - An entity name can contain maximum 50 characters.
+
+  - Acceptable characters in entity names are _, +, %, ^, -, /.
 
 ##### Q2
 * **I can’t build the app!**
