@@ -29,7 +29,7 @@ Requirements
   * [Banner Integration](#banner-integration)  
   * [Interstitial Integration](#interstitial-integration)  
 
-## Extra Google Parameters
+## Google Parameters
   * [Extra Google Parameters](#extra-google-parameters)
 
 ## Customizing your feed ads  
