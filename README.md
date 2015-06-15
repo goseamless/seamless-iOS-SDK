@@ -1,4 +1,4 @@
-seamless-iOS-SDK (v2.2.0)
+seamless-iOS-SDK (v2.3.0)
 ==================================
 
 
@@ -29,6 +29,9 @@ Requirements
   * [Banner Integration](#banner-integration)  
   * [Interstitial Integration](#interstitial-integration)  
 
+## Extra Google Parameters
+  * [Extra Google Parameters](#extra-google-parameters)
+
 ## Customizing your feed ads  
 
   * [Feed Ad Customization](#feed-ad-customization)  
@@ -43,16 +46,16 @@ Requirements
 
 ## Frequently Asked Questions 
   * [FAQ](#faq)
-  * Q1. [What are entities and categories? Are they important?] (#q1)
-  * Q2. [I can’t build the app!] (#q2)
-  * Q3. [I’m getting “Inserting row 0” crash after feed ad integration.] (#q3)
-  * Q4. [Multi-column collection view layout is messed up when feed ad appears.] (#q4)
-  * Q5. [My app crashes after interstitial ad shows up.] (#q5)
-  * Q6. [My app only supports portrait orientation. After Seamless video player disappears, my app stays in landscape mode.] (#q6)
-  * Q7. [I don’t see any advertisements!] (#q7)
-  * Q8. [I don't see any video ads!] (#q8)
-  * Q9. [I’m getting “Unable to run app in Simulator” error.] (#q9)
-  * Q10. [I get compiler error with this message: Undefined symbols for architecture x86_64: “_UnityGetGLViewController”, referenced from: _FBNativeAdClick in Seamless] (#q10)
+  * Q1. [What are entities and categories? Are they important?](#q1)
+  * Q2. [I can’t build the app!](#q2)
+  * Q3. [I’m getting “Inserting row 0” crash after feed ad integration.](#q3)
+  * Q4. [Multi-column collection view layout is messed up when feed ad appears.](#q4)
+  * Q5. [My app crashes after interstitial ad shows up.](#q5)
+  * Q6. [My app only supports portrait orientation. After Seamless video player disappears, my app stays in landscape mode.](#q6)
+  * Q7. [I don’t see any advertisements!](#q7)
+  * Q8. [I don't see any video ads!](#q8)
+  * Q9. [I’m getting “Unable to run app in Simulator” error.](#q9)
+  * Q10. [I get compiler error with this message: Undefined symbols for architecture x86_64: “_UnityGetGLViewController”, referenced from: _FBNativeAdClick in Seamless](#q10)
 
 
 Installation
@@ -61,7 +64,8 @@ Installation
 ### Drag and drop
 
   1. Drag "Seamless.embeddedframework" into "Frameworks" folder.
-     If folder is not visible at the left side of XCode window, you could reveal navigation bar with (command + shift + j) keyboard shortcut and find it under your project. A dialog for file adding options will appear
+     If folder is not visible at the left side of XCode window, you could reveal navigation bar with (command + shift + j) keyboard shortcut and find it under your project. A dialog for file adding options will appear.
+  **Please note that you must use the provided Facebook and Google SDK with seamless.**
 
 
   ![Alt text](/ReadmeAssets/DragAndDrop/6.png "Drag & drop Seamless.embeddedframework")
@@ -69,7 +73,7 @@ Installation
   ![Alt text](/ReadmeAssets/DragAndDrop/7.png "File adding options setup dialog")
 
 
-  . On dialog;
+   On dialog;
 
   * Create groups for any added folders and
 
@@ -407,6 +411,19 @@ self.adManager = nil;
     self.adManager.delegate = nil;
 }
 
+```
+
+### Extra Google Parameters
+- In order to send extra google parameters, set the optional properties per each ad request. (available for all ad types)
+
+```Objective-C
+    self.adManager.gender = SLGenderMale;
+    self.adManager.childDirectedTreatment = NO;
+    self.adManager.contentURL = @“url.com";
+    self.adManager.birthday = date;
+    self.adManager.location = location;
+
+   // request ads
 ```
 
 ### Feed Ad Customization
