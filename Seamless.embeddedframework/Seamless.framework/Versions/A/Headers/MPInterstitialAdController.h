@@ -141,13 +141,14 @@
  */
 + (void)removeSharedInterstitialAdController:(MPInterstitialAdController *)controller;
 
+- (void) dismissInterstitial;
+- (MPAdWebView *)getWebView;
+
 /*
  * Returns the shared pool of interstitial objects for your application.
  */
 + (NSMutableArray *)sharedInterstitialAdControllers;
 
-- (void) dismissInterstitial;
-- (MPAdWebView *)getWebView;
 #pragma mark - Deprecated
 
 /** @name Handling Custom Event Methods (Deprecated) */

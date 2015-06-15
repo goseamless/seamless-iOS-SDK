@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MPAdView.h"
-#import "GADBannerViewDelegate.h"
+#import <GoogleMobileAds/GADBannerViewDelegate.h>
 #import "SLManager.h"
 
 @class SLAd;

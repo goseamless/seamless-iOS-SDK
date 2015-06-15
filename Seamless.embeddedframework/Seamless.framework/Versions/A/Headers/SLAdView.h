@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MPAdView.h"
 #import "SLManager.h"
-#import "GADBannerViewDelegate.h"
+#import <GoogleMobileAds/GADBannerViewDelegate.h>
 
 #define SLAdSizeMMA             CGSizeMake(320, 50)
 #define SLAdSizeMRect           CGSizeMake(300, 250)
@@ -28,6 +28,11 @@
 @interface SLAdView : UIView <MPAdViewDelegate, GADBannerViewDelegate>
 
 @property (nonatomic, weak) id delegate;
+@property(nonatomic, assign) SLGender gender;
+@property(nonatomic, copy) NSDate *birthday;
+@property(nonatomic, copy) NSString *contentURL;
+@property(assign) BOOL childDirectedTreatment;
+@property(nonatomic, strong) CLLocation *location;
 
 - (instancetype)initWithEntity:(NSString *)entity
                       category:(SLCategory)category

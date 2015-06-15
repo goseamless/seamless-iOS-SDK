@@ -20,6 +20,12 @@
 @interface SLCollectionViewAdManager : SLBaseAdManager
 
 @property (nonatomic, weak) id delegate;
+@property(nonatomic, assign) SLGender gender;
+@property(nonatomic, copy) NSDate *birthday;
+@property(nonatomic, copy) NSString *contentURL;
+@property(assign) BOOL childDirectedTreatment;
+@property(nonatomic, strong) CLLocation *location;
+
 
 -(id)initWithCollectionView:(UICollectionView*)collectionView
                  dataSource:(NSMutableArray*)dataSource

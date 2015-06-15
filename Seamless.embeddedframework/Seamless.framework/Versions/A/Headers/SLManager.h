@@ -40,6 +40,12 @@ typedef enum{
     SLCategoryMen
 }SLCategory;
 
+typedef NS_ENUM(NSInteger, SLGender){
+    SLGenderUnknown,
+    SLGenderMale,
+    SLGenderFemale
+};
+
 @interface SLManager : NSObject
 
 @property (nonatomic) float insertTimer;

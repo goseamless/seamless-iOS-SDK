@@ -32,7 +32,6 @@ typedef enum
 @property (nonatomic, assign) BOOL hasTrackedImpression;
 @property (nonatomic, assign) NSTimeInterval firstVisibilityTimestamp;
 
-
 /** @name Initializing a Banner Ad */
 
 /**

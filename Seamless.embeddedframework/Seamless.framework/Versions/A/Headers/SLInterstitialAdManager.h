@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MPInterstitialAdController.h"
-#import "GADInterstitialDelegate.h"
+#import <GoogleMobileAds/GADInterstitialDelegate.h>
 #import "SLManager.h"
 
 @class SLInterstitialAdManager;
@@ -31,6 +31,11 @@
 @interface SLInterstitialAdManager : NSObject <MPInterstitialAdControllerDelegate, GADInterstitialDelegate>
 @property (nonatomic) BOOL landscapeModeEnabled;
 @property (nonatomic, weak) id delegate;
+@property(nonatomic, assign) SLGender gender;
+@property(nonatomic, copy) NSDate *birthday;
+@property(nonatomic, copy) NSString *contentURL;
+@property(assign) BOOL childDirectedTreatment;
+@property(nonatomic, strong) CLLocation *location;
 
 - (id)initWithEntity:(NSString *)entity
             category:(SLCategory)category;
@@ -38,4 +43,5 @@
 - (void)loadAd;
 
 - (void)showFromViewController:(UIViewController *)controller;
+
 @end
