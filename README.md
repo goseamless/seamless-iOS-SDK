@@ -1,4 +1,4 @@
-seamless-iOS-SDK (v2.7.0)
+seamless-iOS-SDK (v2.8.0)
 ==================================
 
 
@@ -266,6 +266,14 @@ self.adManager = nil;
    [adObject loadTitleIntoLabel:self.titleLabel];
    [adObject loadCallToActionTextIntoButton:self.ctaButton];
    [self.ctaButton setEnabled:NO];
+    
+    //Facebook native ad icon integration
+    if (adObject.nativeAd)
+    {
+        self.ctaButton.enabled = TRUE;
+        NSArray *arr = @[self.ctaButton, self.iconImageView, self.mainImageView, self.titleLabel];
+        [adObject setFBAdChoicesView:arr withParentView:self.mainImageView withContentView:self];
+    }
 }
 ```
 
@@ -372,6 +380,14 @@ self.adManager = nil;
    [adObject loadTitleIntoLabel:self.titleLabel];
    [adObject loadCallToActionTextIntoButton:self.ctaButton];
    [self.ctaButton setEnabled:NO];
+
+    //Facebook native ad icon integration
+    if (adObject.nativeAd)
+    {
+        self.ctaButton.enabled = TRUE;
+        NSArray *arr = @[self.ctaButton, self.iconImageView, self.mainImageView, self.titleLabel];
+        [adObject setFBAdChoicesView:arr withParentView:self.mainImageView withContentView:self];
+    }
 }
 ```
 
@@ -493,12 +509,20 @@ Finally, load an ad by sending adView the -loadAd message.
 
 ```Objective-C
 - (void)layoutAdAssets:(MPNativeAd *)adObject
-   adObject loadIconIntoImageView:self.iconImageView];
-   [adObject loadImageIntoImageView:self.mainImageView];
-   [adObject loadTextIntoLabel:self.textLabel];
-   [adObject loadTitleIntoLabel:self.titleLabel];
-   [adObject loadCallToActionTextIntoButton:self.ctaButton];
-   [self.ctaButton setEnabled:NO];
+    adObject loadIconIntoImageView:self.iconImageView];
+    [adObject loadImageIntoImageView:self.mainImageView];
+    [adObject loadTextIntoLabel:self.textLabel];
+    [adObject loadTitleIntoLabel:self.titleLabel];
+    [adObject loadCallToActionTextIntoButton:self.ctaButton];
+    [self.ctaButton setEnabled:NO];
+    
+    //Facebook native ad icon integration
+    if (adObject.nativeAd)
+    {
+        self.ctaButton.enabled = TRUE;
+        NSArray *arr = @[self.ctaButton, self.iconImageView, self.mainImageView, self.titleLabel];
+        [adObject setFBAdChoicesView:arr withParentView:self.mainImageView withContentView:self];
+    }
 }
 ```
 

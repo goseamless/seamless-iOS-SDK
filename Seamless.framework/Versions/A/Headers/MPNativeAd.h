@@ -5,9 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <FBAudienceNetwork/FBAudienceNetwork.h>
 
 @protocol MPNativeAdAdapter;
 @protocol MPNativeAdDelegate;
+@protocol MPNativeAdRenderer;
 @class MPAdConfiguration;
 
 /**
@@ -17,6 +19,12 @@
  */
 
 @interface MPNativeAd : NSObject
+
+@property (nonatomic, assign) BOOL visible;
+- (void)willAttachToView:(UIView *)view;
+- (void)displayAdContent;
+- (void)trackImpression;
+- (void)addGesture;
 
 /** @name Ad Resources */
 
@@ -30,182 +38,22 @@
  */
 @property (nonatomic, readonly) NSDictionary *properties;
 
-/**
- * The default click-through URL for the ad.
- *
- * May be nil.
- */
-@property (nonatomic, readonly) NSURL *defaultActionURL;
-
-/**
- * Star rating for the ad.
- *
- * This is a float value between 0 and 5.
- *
- * May be nil.
- */
-@property (nonatomic, readonly) NSNumber *starRating;
-
 - (instancetype)initWithAdAdapter:(id<MPNativeAdAdapter>)adAdapter;
 
-/** @name Preparing Ad Content for Display */
+/** @name Retrieving Ad View */
 
 /**
- * Instructs the ad object to configure the provided view with ad content.
+ * Retrieves a rendered view containing the ad.
  *
- * The provided view should implement the `MPNativeAdRendering` protocol to correctly display the ad
- * content.
+ * @param error A pointer to an error object. If an error occurs, this pointer will be set to an
+ * actual error object containing the error information.
  *
- * When this method is called, an impression will automatically be recorded at the appropriate time,
- * so there is no need to additionally invoke -trackImpression.
- *
- * @param view A view that will contain the ad content.
- * @see MPNativeAdRendering
+ * @return If successful, the method will return a view containing the rendered ad. The method will
+ * return nil if it cannot render the ad data to a view.
  */
-- (void)prepareForDisplayInView:(UIView *)view;
-
-/** @name Handling Ad Interactions */
-
-/**
- * Records an impression event.
- *
- * When -prepareForDisplayInView is called, -trackImpression will automatically be invoked at the
- * appropriate time, so there is no need to additionally invoke -trackImpression.
- */
-- (void)trackImpression;
-
-/**
- * Records a click event.
- *
- * When -displaycontentForURL:rootViewController:completion: is called, a click event will
- * automatically be recorded, so there is no need to additionally invoke -trackClick.
- */
-- (void)trackClick;
-
-/**
- * Opens a resource defined by the ad using an appropriate mechanism (typically, an in-application
- * modal web browser or a modal App Store controller).
- *
- * @param controller The view controller that should be used to present the modal view controller.
- * @param completionBlock The block to be executed when the action defined by the URL has been
- * completed, returning control to your application.
- *
- * You should call this method when you detect that a user has tapped on the ad (i.e. via button,
- * table view selection, or gesture recognizer).
- *
- * When this method is called, a click event will automatically be recorded, so there is no
- * need to additionally invoke -trackClick.
- *
- * WARNING: This method has been deprecated in favor of displayContentWithCompletion:. Using the new
- * method requires the MPNativeAd to have an MPNativeAdDelegate that implements viewControllerForPresentingModalView.
- */
-- (void)displayContentFromRootViewController:(UIViewController *)controller completion:(void (^)(BOOL success, NSError *error))completionBlock __deprecated;
-
-/**
- * Opens a URL using an appropriate mechanism (typically, an in-application modal web browser or a
- * modal App Store controller).
- *
- * @param URL The URL to be opened.
- * @param controller The view controller that should be used to present the modal view controller.
- * @param completionBlock The block to be executed when the action defined by the URL has been
- * completed, returning control to your application.
- *
- * You should call this method when you detect that a user has tapped on the ad (i.e. via button,
- * table view selection, or gesture recognizer).
- *
- * When this method is called, a click event will automatically be recorded, so there is no
- * need to additionally invoke -trackClick.
- *
- * WARNING: This method has been deprecated in favor of displayContentForURL:withCompletion:. Using the new
- * method requires the MPNativeAd to have an MPNativeAdDelegate that implements viewControllerForPresentingModalView.
- *
- */
-- (void)displayContentForURL:(NSURL *)URL rootViewController:(UIViewController *)controller
-       completion:(void (^)(BOOL success, NSError *error))completionBlock __deprecated;
-/**
- * Opens a resource defined by the ad using an appropriate mechanism (typically, an in-application
- * modal web browser or a modal App Store controller).
- *
- * @param completionBlock The block to be executed when the action defined by the URL has been
- * completed, returning control to your application.
- *
- * You should call this method when you detect that a user has tapped on the ad (i.e. via button,
- * table view selection, or gesture recognizer).
- *
- * When this method is called, a click event will automatically be recorded, so there is no
- * need to additionally invoke -trackClick.
- */
-- (void)displayContentWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock;
-
-/**
- * Opens a URL using an appropriate mechanism (typically, an in-application modal web browser or a
- * modal App Store controller).
- *
- * @param URL The URL to be opened.
- * @param completionBlock The block to be executed when the action defined by the URL has been
- * completed, returning control to your application.
- *
- * You should call this method when you detect that a user has tapped on the ad (i.e. via button,
- * table view selection, or gesture recognizer).
- *
- * When this method is called, a click event will automatically be recorded, so there is no
- * need to additionally invoke -trackClick.
- */
-- (void)displayContentForURL:(NSURL *)URL completion:(void (^)(BOOL success, NSError *error))completionBlock;
+- (UIView *)retrieveAdViewWithError:(NSError **)error;
 
 - (void)trackMetricForURL:(NSURL *)URL;
-
-/** @name Loading Specific Ad Resources into Views */
-
-/**
- * Asynchronously loads the ad object's icon image into the provided image view.
- *
- * @param imageView An image view.
- */
-- (void)loadIconIntoImageView:(UIImageView *)imageView;
-
-/**
- * Asynchronously loads the ad object's main image into the provided image view.
- *
- * @param imageView An image view.
- */
-- (void)loadImageIntoImageView:(UIImageView *)imageView;
-
-/**
- * Loads the ad object's title into the provided label.
- *
- * @param label A label.
- */
-- (void)loadTitleIntoLabel:(UILabel *)label;
-
-/**
- * Loads the ad object's main text into the provided label.
- *
- * @param label A label.
- */
-- (void)loadTextIntoLabel:(UILabel *)label;
-
-/**
- * Loads the ad object's call-to-action text into the provided label.
- *
- * @param label A label.
- */
-- (void)loadCallToActionTextIntoLabel:(UILabel *)label;
-
-/**
- * Loads the ad object's call-to-action text into the provided button.
- *
- * @param button A button.
- */
-- (void)loadCallToActionTextIntoButton:(UIButton *)button;
-
-/**
- * Asynchronously loads the image referenced by imageURL into the provided image view.
- *
- * @param imageURL A URL identifying an image resource.
- * @param imageView An image view.
- */
-- (void)loadImageForURL:(NSURL *)imageURL intoImageView:(UIImageView *)imageView;
 
 /**
  * Loads the ad object's social context text into the provided label.
@@ -213,5 +61,28 @@
  * @param label A label.
  */
 - (void)loadsocialContextTextIntoLabel:(UILabel *)label;
+
+/* Onur added */
+- (UIView *)privacyInformationIconView;
+@property (nonatomic, strong) FBNativeAd *nativeAd;
+
+/**
+ * Adds Facebook AdChoiceView to given parent view (parentView) if the MoPub ad is coming from Facebook ads.
+ *
+ * @param adViewComponents NSArray indicates all the subviews in the ad view. Please specify all the components which sould be clickable for the Facebook ad.
+ * @param parentView UIView which the adChoiceView will be inserted as subview.
+ * @param contentView UIView which is the Ad View.
+ *
+ */
+- (void)setFBAdChoicesView:(NSArray *)adViewComponents
+            withParentView:(UIView *)parentView
+           withContentView:(UIView *)contentView;
+- (void)loadIconIntoImageView:(UIImageView *)imageView;
+- (void)loadImageIntoImageView:(UIImageView *)imageView;
+- (void)loadTitleIntoLabel:(UILabel *)label;
+- (void)loadTextIntoLabel:(UILabel *)label;
+- (void)loadCallToActionTextIntoLabel:(UILabel *)label;
+- (void)loadCallToActionTextIntoButton:(UIButton *)button;
+
 
 @end

@@ -7,8 +7,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-@class MPAdWebView;
 
+@class MPAdWebView;
 @protocol MPInterstitialAdControllerDelegate;
 
 /**
@@ -149,34 +149,6 @@
  */
 + (NSMutableArray *)sharedInterstitialAdControllers;
 
-#pragma mark - Deprecated
-
-/** @name Handling Custom Event Methods (Deprecated) */
-
-/**
- * Notifies MoPub that a custom event has successfully loaded an interstitial.
- *
- * @bug **Warning**: This method has been deprecated. You should instead implement interstitial
- * custom events using a subclass of `MPInterstitialCustomEvent`.
- */
-- (void)customEventDidLoadAd __attribute__((deprecated));
-
-/**
- * Notifies MoPub that a custom event has failed to load an interstitial.
- *
- * @bug **Warning**: This method has been deprecated. You should instead implement interstitial
- * custom events using a subclass of `MPInterstitialCustomEvent`.
- */
-- (void)customEventDidFailToLoadAd __attribute__((deprecated));
-
-/**
- * Notifies MoPub that a user has tapped on a custom event interstitial.
- *
- * @bug **Warning**: This method has been deprecated. You should instead implement interstitial
- * custom events using a subclass of `MPInterstitialCustomEvent`.
- */
-- (void)customEventActionWillBegin __attribute__((deprecated));
-
 @end
 
 #pragma mark -
@@ -277,16 +249,5 @@
  * @param interstitial The interstitial ad object sending the message.
  */
 - (void)interstitialDidReceiveTapEvent:(MPInterstitialAdController *)interstitial;
-
-/*
- * DEPRECATED: This callback notifies you to dismiss the interstitial, and allows you to implement
- * any pre-dismissal behavior (e.g. unpausing a game). This method is being deprecated as it is no
- * longer necessary to dismiss an interstitial manually (i.e. via calling
- * -dismissModalViewControllerAnimated:).
- *
- * Any pre-dismissal behavior should be implemented using -interstitialWillDisappear: or
- * -interstitialDidDisappear: instead.
- */
-- (void)dismissInterstitial:(MPInterstitialAdController *)interstitial __attribute__((deprecated));
 
 @end
