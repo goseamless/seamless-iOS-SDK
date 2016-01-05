@@ -7,7 +7,7 @@ Requirements
 
 - Minimum deployment target
 
-- iOS 6.0
+- iOS 6.0 
 
 - Auto Reference Counting (ARC)
 
