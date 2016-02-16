@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MPInterstitialAdController.h"
-#import <GoogleMobileAds/GADInterstitialDelegate.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
 #import "SLManager.h"
 
 @class SLInterstitialAdManager;
@@ -28,7 +28,7 @@
 
 @end
 
-@interface SLInterstitialAdManager : NSObject <MPInterstitialAdControllerDelegate, GADInterstitialDelegate>
+@interface SLInterstitialAdManager : NSObject <MPInterstitialAdControllerDelegate, GADInterstitialDelegate, GADAppEventDelegate>
 @property (nonatomic) BOOL landscapeModeEnabled;
 @property (nonatomic, weak) id delegate;
 @property(nonatomic, assign) SLGender gender;

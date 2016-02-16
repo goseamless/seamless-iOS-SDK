@@ -56,6 +56,8 @@ typedef NS_ENUM(NSInteger, SLGender){
 @property (nonatomic, strong) NSString * fallbackInterstitialSource;
 @property (nonatomic) BOOL isPreroll;
 @property (nonatomic) BOOL locationEnabled;
+@property (nonatomic) BOOL logEnabled;
+@property (nonatomic) BOOL useDummy;
 
 + (SLManager*)sharedManager;
 + (NSString *) versiyon;

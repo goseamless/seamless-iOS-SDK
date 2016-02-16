@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "MPAdView.h"
-#import <GoogleMobileAds/GADBannerViewDelegate.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
+#import <GoogleMobileAds/GADAdLoaderDelegate.h>
 #import "SLManager.h"
 
 @class SLAd;
@@ -16,7 +17,7 @@
 @class SLAppearance;
 @class MPNativeAd;
 
-@interface SLBaseAdManager : NSObject <MPAdViewDelegate, GADBannerViewDelegate>
+@interface SLBaseAdManager : NSObject <MPAdViewDelegate, GADBannerViewDelegate, GADAdLoaderDelegate, GADNativeCustomTemplateAdLoaderDelegate, GADAppEventDelegate>
 
 @property (nonatomic, strong) SLAppearance * appearance;
 @property (nonatomic, weak, readwrite) NSMutableArray * dataSource;
